@@ -5,7 +5,7 @@
 Для генерации используется **MkDocs** — статический сайт-генератор на Python.  
 Сайт автоматически деплоится на **GitHub Pages** с помощью **GitHub Actions**.
 
-🔗 Ссылка на сайт: [https://ivanmonichev.github.io/void-static-site](https://ivanmonichev.github.io/void-static-site)
+🔗 Ссылка на репозиторий: [https://github.com/IvanMonichev/void-static-site](https://github.com/IvanMonichev/void-static-site)
 
 ---
 
