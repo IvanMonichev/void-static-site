@@ -8,7 +8,7 @@ const htmlhint = require("gulp-htmlhint");
 const { deleteSync } = require("del");
 
 async function clean() {
-  return deleteSync(["build", "../void-theme/**/*"], {force: true});
+  return deleteSync(["build"], {force: true});
 
 }
 
@@ -36,13 +36,13 @@ function templates() {
     .pipe(gulp.dest("build"));
 }
 
-function copyToTheme() {
-  return gulp
-    .src("build/**/*", { base: "build" })
-    .pipe(gulp.dest("../void-theme"));
-}
+// function copyToTheme() {
+//   return gulp
+//     .src("build/**/*", { base: "build" })
+//     .pipe(gulp.dest("../void-theme"));
+// }
 
-const build = gulp.series(clean, css, templates, copyToTheme);
+const build = gulp.series(clean, css, templates);
 function watch() {
   gulp.watch(["css/**/*.css", "html/**/*.html"], build);
 }

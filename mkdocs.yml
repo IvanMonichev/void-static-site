@@ -4,7 +4,7 @@ site_author: Иван Моничев
 
 theme:
   name: null
-  custom_dir: void-theme
+  custom_dir: template/build
 
 nav:
   - Главная: index.md
