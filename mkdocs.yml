@@ -1,6 +1,6 @@
 site_name: Void Static Site
 site_description: Мой кастомный сайт на MkDocs
-site_author: Иван
+site_author: Иван Моничев
 
 theme:
   name: null
@@ -8,3 +8,6 @@ theme:
 
 nav:
   - Главная: index.md
+
+watch:
+  - void-theme
