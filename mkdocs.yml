@@ -12,5 +12,5 @@ nav:
 
 
 watch:
-  - void-theme
+  - template/build
   - docs
