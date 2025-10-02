@@ -1,4 +1,4 @@
-name: Deploy MkDocs site to Pages
+name: Build & Deploy MkDocs site to Pages
 
 on:
   push:
@@ -7,14 +7,39 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.x"
-      - run: pip install mkdocs
-      - run: mkdocs build
-      - uses: peaceiris/actions-gh-pages@v3
+          node-version: 20
+
+      - name: Install Node.js deps
+        run: npm ci
+        working-directory: template
+
+      - name: Build frontend (HTML + CSS)
+        run: npx gulp build
+        working-directory: template
+
+      # 3. Python для MkDocs
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      # 4. Сборка MkDocs
+      - name: Build MkDocs site
+        run: mkdocs build --strict
+
+      # 5. Деплой на GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
