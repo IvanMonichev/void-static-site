@@ -5,11 +5,11 @@ on:
     branches: ["main"]
 
 jobs:
-  deploy:
+  frontend:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -20,24 +20,59 @@ jobs:
         run: npm ci
         working-directory: template
 
-      - name: Build frontend (HTML + CSS)
+      - name: Build frontend with Gulp
         run: npx gulp build
         working-directory: template
 
-      # 3. Python для MkDocs
+      - name: Upload theme artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: void-theme
+          path: template/../void-theme
+
+  mkdocs:
+    runs-on: ubuntu-latest
+    needs: frontend
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: Download theme artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: void-theme
+          path: void-theme
+
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      # 4. Сборка MkDocs
       - name: Build MkDocs site
         run: mkdocs build --strict
 
-      # 5. Деплой на GitHub Pages
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: mkdocs
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
