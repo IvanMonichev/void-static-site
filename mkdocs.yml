@@ -1,1 +1,4 @@
-site_name: My Docs
+site_name: Void Static Site
+theme:
+  name: mkdocs
+  locale: ru
