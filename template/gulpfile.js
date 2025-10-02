@@ -3,6 +3,14 @@ const postcss = require("gulp-postcss");
 const tailwindcss = require("@tailwindcss/postcss");
 const autoprefixer = require("autoprefixer");
 const rename = require("gulp-rename");
+const htmlmin = require("gulp-htmlmin");
+const htmlhint = require("gulp-htmlhint");
+const { deleteSync } = require("del");
+
+async function clean() {
+  return deleteSync(["build", "../void-theme/**/*"], {force: true});
+
+}
 
 function css() {
   return gulp
@@ -12,10 +20,19 @@ function css() {
     .pipe(gulp.dest("build/assets"));
 }
 
-// Копирование шаблонов (overrides → build)
 function templates() {
   return gulp
     .src("html/**/*.html")
+    .pipe(htmlhint())
+    .pipe(htmlhint.reporter())
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+      })
+    )
     .pipe(gulp.dest("build"));
 }
 
@@ -25,11 +42,11 @@ function copyToTheme() {
     .pipe(gulp.dest("../void-theme"));
 }
 
-const build = gulp.series(css, templates, copyToTheme);
-// Вотчер: следим за CSS, md и html
+const build = gulp.series(clean, css, templates, copyToTheme);
 function watch() {
   gulp.watch(["css/**/*.css", "html/**/*.html"], build);
 }
 
+exports.clean = clean;
 exports.watch = watch;
 exports.build = build

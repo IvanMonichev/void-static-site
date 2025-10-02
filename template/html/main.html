@@ -10,13 +10,17 @@
     <link rel="stylesheet" href="{{ 'assets/styles.css' | url }}">
 </head>
 <body>
-{% include "partials/header.html" %}
 
-<main class="content">
-    {{ page.content }}
-</main>
 
-{% include "partials/footer.html" %}
+  <!-- Основной контент -->
+  <div class="flex-1 min-h-screen overflow-y-auto">
+    {% include "partials/header.html" %}
 
+    <main class="content max-w-3xl w-full mx-auto px-4 py-6">
+      {{ page.content }}
+    </main>
+
+    {% include "partials/footer.html" %}
+  </div>
 </body>
 </html>

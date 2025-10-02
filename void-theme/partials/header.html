@@ -1,18 +1,1 @@
-<header class="bg-gray-900 text-white shadow-md">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Лого/Название -->
-    <h1 class="text-xl font-bold tracking-wide">
-      {{ config.site_name }}
-    </h1>
-
-    <!-- Навигация -->
-    <nav class="flex gap-6">
-      {% for nav_item in nav %}
-        <a href="{{ nav_item.url | url }}"
-           class="text-gray-300 hover:text-white transition-colors duration-200">
-          {{ nav_item.title }}
-        </a>
-      {% endfor %}
-    </nav>
-  </div>
-</header>
+<header class="bg-gray-900 text-white shadow-md"><div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"><h1 class="text-xl font-bold tracking-wide">{{ config.site_name }}</h1><nav class="flex gap-6">{% for nav_item in nav %} <a href="{{ nav_item.url | url }}" class="text-gray-300 hover:text-white transition-colors duration-200">{{ nav_item.title }} </a>{% endfor %}</nav></div></header>

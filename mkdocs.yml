@@ -4,10 +4,13 @@ site_author: Иван Моничев
 
 theme:
   name: null
-  custom_dir: void-theme/
+  custom_dir: void-theme
 
 nav:
   - Главная: index.md
+  - Задание 2: task-2.md
+
 
 watch:
   - void-theme
+  - docs

@@ -14,10 +14,16 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
     "autoprefixer": "^10.4.21",
+    "del": "^8.0.1",
     "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-htmlhint": "^4.0.2",
     "gulp-postcss": "^10.0.0",
     "gulp-rename": "^2.1.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.14"
+  },
+  "dependencies": {
+    "gulp-htmlmin": "^5.0.1"
   }
 }

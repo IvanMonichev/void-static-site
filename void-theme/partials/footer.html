@@ -1,14 +1,1 @@
-<footer class="bg-gray-900 text-gray-400 py-6 mt-12">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-    <p class="text-sm">
-      © {{ config.site_author }}, {{ build_date_utc.strftime("%Y") }}
-    </p>
-    <nav class="flex gap-4 text-sm">
-      {% for nav_item in nav %}
-        <a href="{{ nav_item.url | url }}" class="hover:text-white transition-colors duration-200">
-          {{ nav_item.title }}
-        </a>
-      {% endfor %}
-    </nav>
-  </div>
-</footer>
+<footer class="bg-gray-900 text-gray-400 py-6 mt-12"><div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4"><p class="text-sm">© {{ config.site_author }}, {{ build_date_utc.strftime("%Y") }}</p><nav class="flex gap-4 text-sm">{% for nav_item in nav %} <a href="{{ nav_item.url | url }}" class="hover:text-white transition-colors duration-200">{{ nav_item.title }} </a>{% endfor %}</nav></div></footer>

@@ -15,5 +15,5 @@ pip install -r requirements.txt
 ```
 
 ```bash
-mkdocs serve
+mkdocs serve --livereload
 ```
