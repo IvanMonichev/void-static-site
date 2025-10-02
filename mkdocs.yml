@@ -4,7 +4,7 @@ site_author: Иван
 
 theme:
   name: null
-  custom_dir: void-theme
+  custom_dir: void-theme/
 
 nav:
   - Главная: index.md
