@@ -1,4 +1,7 @@
 site_name: Void Static Site
+site_description: Мой кастомный сайт на MkDocs
+site_author: Иван
+
 theme:
-  name: mkdocs
-  locale: ru
+  name: null
+  custom_dir: void-theme

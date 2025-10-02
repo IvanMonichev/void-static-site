@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9fafb;
+  color: #333;
+}
+
+header, footer {
+  padding: 1rem;
+  background: #111;
+  color: #fff;
+}
+
+nav a {
+  margin-right: 10px;
+  color: #61dafb;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}

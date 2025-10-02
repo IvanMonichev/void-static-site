@@ -1,0 +1,8 @@
+<header>
+  <h1>{{ config.site_name }}</h1>
+  <nav>
+    {% for nav_item in nav %}
+      <a href="{{ nav_item.url | url }}">{{ nav_item.title }}</a>
+    {% endfor %}
+  </nav>
+</header>

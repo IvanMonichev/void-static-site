@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>{{ config.site_name }} - {{ page.title }}</title>
+  <meta name="description" content="{{ config.site_description }}">
+  <meta name="author" content="{{ config.site_author }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ 'assets/styles.css' | url }}">
+</head>
+<body>
+  {% include "partials/header.html" %}
+
+  <main class="content">
+    {{ content }}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <script src="{{ 'assets/main.js' | url }}" defer></script>
+</body>
+</html>
